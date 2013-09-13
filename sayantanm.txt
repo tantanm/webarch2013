@@ -1,1 +1,5 @@
-Jim Blomo
+Your experience with web architecture. Have you written HTML before? Written Javascript? etc.
+I have done web arch in my undergrads and mostly used J2EE then but I have not used them for very long time and pretty much out of synch. I wanna relearn and practice stuffs in the class and use it as part of my final project.
+What are your favorite features from at least 2 browsers?
+Chrome: I like the bookmark way of chrome.
+Safari: I like the language support in Safari.
