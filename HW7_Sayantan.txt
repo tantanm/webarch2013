@@ -1,0 +1,58 @@
+What’s the diﬀerence between Yelp’s 
+homepage compressed and uncompressed?
+Yelp homepage http://www.yelp.com/berkeley was transferred to my system as a gzip file from the Yelp server over 289 ms as a 18.3KB and then it was decompressed over 347ms as a file of size 84.2KB. 
+
+•Use curl - downloads items from internet
+curl www.yelp.com downloads the file and prints it on the command line. It's the whole HTML file and its too large to paste it here.
+
+•man curl to get help
+•-v: provide verbose output
+sayantanm@~$ curl -v www.yelp.com >yelp.html
+* About to connect() to www.yelp.com port 80 (#0)
+*   Trying 198.51.132.160...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* connected
+* Connected to www.yelp.com (198.51.132.160) port 80 (#0)
+> GET / HTTP/1.1
+> User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8r zlib/1.2.5
+> Host: www.yelp.com
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Date: Fri, 18 Oct 2013 04:10:34 GMT
+< Server: Apache
+< X-Node: web15-r3-sfo2, www_all
+< Cache-Control: private
+< Set-Cookie: yuv=qxk9jlp4YnEf0Gn2PX56WdhxtViB4WBwE156Svaja_BVo0SHMPERIRT33GmZuvJBZPDv-6TrVE1VfwUuJMOZweb69xt4rErc; Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 13-Oct-2033 04:10:34 GMT
+< Set-Cookie: bse=e55436ceab0f52948b0451234fd8cd10; Domain=.yelp.com; Path=/; HttpOnly
+< Set-Cookie: hl=en_US; Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 13-Oct-2033 04:10:34 GMT
+< Set-Cookie: recentlocations=; Domain=.yelp.com; Path=/
+< Set-Cookie: location=%7B%22city%22%3A+%22San+Francisco%22%2C+%22zip%22%3A+%22%22%2C+%22address1%22%3A+%22%22%2C+%22address2%22%3A+%22%22%2C+%22address3%22%3A+%22%22%2C+%22state%22%3A+%22CA%22%2C+%22country%22%3A+%22US%22%2C+%22unformatted%22%3A+%22San+Francisco%2C+CA%22%7D; Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 13-Oct-2033 04:10:34 GMT
+< Set-Cookie: fd=0; Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 13-Oct-2033 04:10:34 GMT
+< Content-Length: 86920
+< Vary: Accept-Encoding,User-Agent
+< Content-Type: text/html; charset=UTF-8
+< X-Mode: ro
+< X-Proxied: extlb2-r5-sfo2
+< 
+{ [data not shown]
+100 86920  100 86920    0     0  82601      0  0:00:01  0:00:01 --:--:--  125k
+* Connection #0 to host www.yelp.com left intact
+* Closing connection #0
+
+•-H: specify HTTP headers
+sayantanm@~$ curl -H GET www.yelp.com> yelp.html
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 88314  100 88314    0     0   106k      0 --:--:-- --:--:-- --:--:--  116k
+sayantanm@~$ curl -H GET www.wikipedia.com> wikipedia.html
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   233  100   233    0     0    376      0 --:--:-- --:--:-- --:--:--  2240
+
+•>: redirect command output to ﬁle
+sayantanm@~$ curl www.yelp.com >yelp.html
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 88116  100 88116    0     0  81123      0  0:00:01  0:00:01 --:--:--  122k
