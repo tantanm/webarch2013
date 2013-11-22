@@ -1,0 +1,76 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;\f2\fswiss\fcharset0 ArialMT;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red26\green26\blue26;\red255\green255\blue255;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0
+\f0\fs24 \cf0 1. What series of IPs would a recursive DNS server use to find the address of\'a0
+\f1 \cb2 m.yelp.com
+\f0 \cb1 ?\
+\
+\pard\pardeftab720
+
+\f2\fs20 \cf3 harbinger:~/web2013$ traceroute m.yelp.com\
+traceroute to m.yelp.com (199.255.189.234), 30 hops max, 60 byte packets\
+\'a01 \'a0g3-35.inr-211-srb.Berkeley.EDU (128.32.78.3) \'a00.933 ms \'a00.934 ms \'a00.964 ms\
+\'a02 \'a0t6-1.inr-202-reccev.Berkeley.EDU (128.32.255.126) \'a00.960 ms \'a00.979 ms \'a01.146 ms\
+\'a03 \'a0xe-5-1-0.inr-001-sut.Berkeley.EDU (128.32.0.66) \'a04.045 ms \'a03.999 ms \'a04.006 ms\
+\'a04 \'a0cenic.net (137.164.50.16) \'a01.305 ms \'a01.294 ms \'a01.307 ms\
+\'a05 \'a0oak-agg2--sfo-agg1-10g.cenic.net (137.164.22.25) \'a04.570 ms \'a04.562 ms \'a04.560 ms\
+\'a06 \'a0dc-paix-px1--oak-core1-ge.cenic.net (137.164.47.18) \'a03.374 ms \'a03.401 ms \'a03.387 ms\
+\'a07 \'a0abovenet--paix-px1.cenic.net (198.32.251.154) \'a03.502 ms \'a03.473 ms \'a03.517 ms\
+\'a08 \'a0xe-3-0-0.cr1.sjc2.us.above.net (64.125.31.66) \'a031.758 ms \'a031.827 ms \'a031.712 ms\
+\'a09 \'a0xe-0-0-0.cr2.sjc2.us.above.net (64.125.30.126) \'a04.579 ms \'a029.173 ms \'a029.166 ms\
+10 \'a0xe-0-1-0.mpr4.sfo7.us.above.net (64.125.26.61) \'a05.312 ms \'a05.302 ms \'a05.303 ms\
+11 \'a0209.66.115.62.t01325-02.above.net (209.66.115.62) \'a05.409 ms \'a05.368 ms \'a05.471 ms\
+12 \'a0m.sfo1.yelp.com (199.255.189.234) \'a05.457 ms \'a05.495 ms \'a05.504 ms\
+\
+The recursive IPs DNS servers use are Berkeley.EDU, cenic.net and above.net to reach to m.yelp.com from Berkeley ISchool server!\'a0\
+\pard\pardeftab720
+
+\f0\fs24 \cf0 \
+\pard\pardeftab720
+
+\f2\fs20 \cf3 2.\'a0
+\f0\fs24 \cf0 What are the IP addresses of\'a0
+\f1 \cb2 m.yelp.com
+\f0 \cb1 ?
+\f2\fs20 \cf3 \
+host m.yelp.com\
+m.yelp.com has address 199.255.189.34\
+m.yelp.com has address 198.51.132.34\
+m.yelp.com has address 198.51.132.234\
+m.yelp.com has address 199.255.189.234\
+\
+The IP addresses for m.yelp.com are as above. For the traceout above the trace call reached the 4th one in the above list.\
+\pard\pardeftab720
+
+\f0\fs24 \cf0 \
+\pard\pardeftab720
+
+\f2\fs20 \cf3 3.\'a0
+\f0\fs24 \cf0 Do IP packets leave the Berkeley network when traveling to\'a0
+\f1 \cb2 amplab.cs.berkeley.edu
+\f0 \cb1 ? Include the command and output.
+\f2\fs20 \cf3 \
+\
+traceroute amplab.cs.berkeley.edu\
+traceroute to amplab.cs.berkeley.edu (128.32.37.248), 30 hops max, 60 byte packets\
+\'a01 \'a0g3-35.inr-211-srb.Berkeley.EDU (128.32.78.3) \'a00.976 ms \'a00.967 ms \'a00.933 ms\
+\'a02 \'a0t6-1.inr-202-reccev.Berkeley.EDU (128.32.255.126) \'a00.957 ms \'a01.003 ms \'a01.037 ms\
+\'a03 \'a0reccev-eecs-br-10GE.EECS.Berkeley.EDU (128.32.255.58) \'a01.902 ms \'a01.917 ms \'a02.212 ms\
+\'a04 \'a0soda-10g-edge.EECS.Berkeley.EDU (169.229.59.242) \'a02.411 ms \'a02.510 ms \'a02.511 ms\
+\'a05 \'a0www-research2.CS.Berkeley.EDU (128.32.37.248) \'a01.866 ms !X \'a01.895 ms !X \'a01.919 ms !X\
+\
+The IP packets do not leave the Berkeley network as the resource we are looking for is inside the Berkeley DNS only.\'a0\
+\
+\pard\pardeftab720
+\cf3 \cb4 -- \cb1 \
+\cb4 Best Regards\cb1 \
+Sayantan\
+}
